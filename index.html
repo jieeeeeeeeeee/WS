@@ -1,0 +1,387 @@
+<html><head>
+    <title>基于国产立体卫星影像的高原冰湖三维重建与蓄水量估计</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+        }
+        h2 {
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        h4 {
+            margin-top: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        img {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .figure-caption {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        .table-caption {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .ref-list p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.25rem;
+        }
+        .lead {
+            font-size: 1.15rem;
+        }
+    </style>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1115.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1115.0">
+
+
+<div class="container">
+    <div class="section">
+        <h2 class="text-center" style="margin-top: 3rem; margin-bottom: 2rem;">基于国产立体卫星影像的高原冰湖三维重建与蓄水量估计<br>——以“7 ∙ 8”吉隆口岸冰湖溃决洪水为例</h2>
+        
+        <table align="center" width="80%">
+            <tbody><tr>
+                <td align="center"><span style="font-size:20px">曲英杰<sup>1</sup></span></td>
+                <td align="center"><span style="font-size:20px">叶松<sup>1*</sup></span></td>
+                <td align="center"><span style="font-size:20px">王莹<sup>1</sup></span></td>
+                <td align="center"><span style="font-size:20px">李芹<sup>1</sup></span></td>
+            </tr>
+            <tr>
+                <td align="center"><span style="font-size:20px">廖博承<sup>1</sup></span></td>
+                <td align="center"><span style="font-size:20px">姚正利<sup>1</sup></span></td>
+                <td align="center"><span style="font-size:20px">周建银<sup>2</sup></span></td>
+                <td align="center"><span style="font-size:20px">王珺柯<sup>1</sup></span></td>
+            </tr>
+        </tbody></table>
+ 
+        <table align="center" width="80%" style="margin-top: 1rem;">
+            <tbody><tr>
+                <td align="center">
+                    <span style="font-size:18px">1. 长江科学院 空间信息技术应用研究所，武汉 430010</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <span style="font-size:18px">2. 长江科学院 河流研究所，武汉 430010</span>
+                </td>
+            </tr>
+        </tbody></table>     
+        <hr>
+    </div>
+
+    <div class="section">
+        <h2>摘 要</h2>
+        <p classclass="lead">
+            针对高原偏远无资料地区冰湖水量动态精准监测的难题，提出一种基于立体测绘卫星的水量估算方法。以2025年7月8日西藏吉隆溃决冰湖为例，利用高分七号（GF7）与资源三号（ZY3）立体影像重建湖盆数字表面模型（DSM），并结合2021–2025年哨兵二号影像自动提取多时相湖泊边界，通过边界与地形等高线最优匹配估计水位与蓄水量，同时采用ICESat-2激光测高数据验证地形精度。结果表明，本文GF7-DSM与ICESat-2之间的平均绝对误差为1.37米；时序监测显示该冰湖存在明显“冬枯夏涨”现象，2025年7月7日蓄水量达历史极值约982万m³；溃决发生于7月7日12时52分至8日12时56分，24小时内下泄水量约424万m³，洪峰传播路径总长41.2km、落差3318 m、平均比降80.5‰，巨大势能转化与强水动力条件是导致灾害的直接原因。研究验证了国产立体测绘卫星在无资料地区冰湖动态水量监测中的有效性，可为高原冰湖溃决预警与灾害防控提供数据支撑。
+        </p>
+        <p><b>关键词：</b> 水量监测；冰湖溃决洪水；星载立体测绘；高分七号卫星；应急监测</p>
+        <hr>
+    </div>
+
+    <div class="section">
+        <h2>7·8吉隆洪水</h2>
+		<!-- 这里加一个视频连接，doc/1.mp3 适合页面大小-->
+		 <video style="width:100%; margin-right:-10px; margin-top:10px;" controls="" src="./images/v0.mp4" autoplay="autoplay" loop="loop" controls="controls" playsinline="true" muted="true"> </video>
+
+        <hr>
+    </div>
+
+    <div class="section">
+        <h2>2 基于国产立体卫星的溃决冰湖水量监测</h2>
+		<img src="images/图0.png" style="width:100%;">
+
+		<video style="width:100%; margin-right:-10px; margin-top:10px;" controls="" src="./images/v1.mp4" autoplay="autoplay" loop="loop" controls="controls" playsinline="true" muted="true"> </video>
+        <p>
+            基于立体卫星重建冰湖湖盆三维地形
+        </p>
+        <hr>
+    </div>
+
+    <div class="section">
+        <h2>3 技术路线</h2>
+		<img src="images/图3.png" style="width:100%;">
+        <hr>
+    </div>
+
+    <div class="section">
+        <h2>4 实验与分析</h2>
+        <h3>4.1 重建DSM定性分析</h3>
+        <p>
+            图1对比了不同DSM的地形差异。本文方法重建的GF7 DSM（图1b）展示了最为丰富的地形细节。商业软件（图1e, f）在冰舌等弱纹理区域出现了明显的地形空洞，而本文方法在相同区域的地形更为完整平滑。
+        </p>
+        <img src="images/图9.png" style="width:100%;">
+        <p class="figure-caption"><b>图1</b> DSM细节对比</p>
+
+
+        <h3>4.2 基于ICESat-2的无资料地区地形精度评定</h3>
+		<hr>
+		<h2>冰湖区域DSM精度评价</h2>
+		<p>
+        <p>
+            为客观评估不同地形数据产品的高程精度，以ICESat-2激光测高数据作为参考真值进行精度统计。引入两款主流商业软件（ENVI, Metashape）生成的DSM，与本文方法（Ours-GF7, Ours-ZY3）及SRTM数据进行对比。
+        </p>
+        <img src="images/图4.png" style="width:100%;">
+        <p class="figure-caption"><b>图2</b> 冰湖区域DSM精度评价范围</p>
+        <p>
+            如表1所示，本文方法（Ours-GF7-DSM）的高程精度最高，其MAE为1.37米，RMSE为1.62米。商业软件的精度（MAE 1.42米, 1.51米）略低于本方法。Ours-ZY3-DSM精度次之（MAE 2.65米），而SRTM数据因分辨率限制，误差最大（MAE 5.17米）。
+        </p>
+        
+        <p class="table-caption">表1 不同地形数据与ICESAT2高程的相对精度，误差单位米</p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>地形数据</th>
+                    <th>ICESat-2点（万）</th>
+                    <th>RMSE</th>
+                    <th>MAE</th>
+                    <th>Q75</th>
+                    <th>Q95</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SRTM</td>
+                    <td>1.9</td>
+                    <td>6.18</td>
+                    <td>5.17</td>
+                    <td>7.49</td>
+                    <td>11.56</td>
+                </tr>
+                <tr>
+                    <td>Ours-ZY3-DSM</td>
+                    <td>1.9</td>
+                    <td>3.09</td>
+                    <td>2.65</td>
+                    <td>3.90</td>
+                    <td>5.40</td>
+                </tr>
+                <tr>
+                    <td>ENVI-GF7-DSM</td>
+                    <td>1.9</td>
+                    <td>1.67</td>
+                    <td>1.42</td>
+                    <td>2.16</td>
+                    <td>3.20</td>
+                </tr>
+                <tr>
+                    <td>Metashape-GF7-DSM</td>
+                    <td>1.9</td>
+                    <td>1.81</td>
+                    <td>1.51</td>
+                    <td>2.11</td>
+                    <td>3.40</td>
+                </tr>
+                <tr>
+                    <td>Ours-GF7-DSM</td>
+                    <td>1.9</td>
+                    <td>1.62</td>
+                    <td>1.37</td>
+                    <td>1.97</td>
+                    <td>3.13</td>
+                </tr>
+            </tbody>
+        </table>
+	<div class="section">
+		<hr>
+		<h2>整体DSM精度评价</h2>
+		<p>
+			
+		</p>
+		<p>
+			基于ICESat-2高程点对各自完整覆盖区域（包括ZY3、GF7与SRTM DSM）进行精度评定，图3展示了DSM和流域ICESat-2点的关系。
+		</p>
+
+		<img src="images/图5-1.png" style="width:100%;">
+		<p class="figure-caption"><b>图3</b> 不同DSM和研究流域内ICESat-2点集的覆盖关系</p>
+
+		<p>
+			表2展示了各DSM在整体覆盖范围内的定量精度。结果显示，本文方法（Ours-GF7-DSM）的平均绝对误差（MAE）为2.26米，精度最高。相比之下，商业软件（ENVI、Metashape）由于在雪山等弱纹理区域存在明显几何粗差（如图4所示），导致其整体MAE显著偏高（4.94米和4.41米）。
+		</p>
+		
+		<p class="table-caption">表2不同地形数据在整体覆盖范围内与ICESat-2高程的相对误差，误差单位米</p>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>地形数据</th>
+					<th>验证点(万个)</th>
+					<th>RMSE</th>
+					<th>MAE</th>
+					<th>Q75</th>
+					<th>Q95</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>SRTM</td>
+					<td>349.2</td>
+					<td>7.33</td>
+					<td>5.76</td>
+					<td>8.67</td>
+					<td>15.01</td>
+				</tr>
+				<tr>
+					<td>Ours-ZY3-DSM</td>
+					<td>282.6</td>
+					<td>4.18</td>
+					<td>3.36</td>
+					<td>5.13</td>
+					<td>8.13</td>
+				</tr>
+				<tr>
+					<td>ENVI-GF7-DSM</td>
+					<td>69.5</td>
+					<td>7.08</td>
+					<td>4.94</td>
+					<td>6.70</td>
+					<td>16.57</td>
+				</tr>
+				<tr>
+					<td>Metashape-GF7-DSM</td>
+					<td>69.5</td>
+					<td>7.22</td>
+					<td>4.41</td>
+					<td>5.12</td>
+					<td>15.85</td>
+				</tr>
+				<tr>
+					<td>Ours-GF7-DSM</td>
+					<td>66.8</td>
+					<td>2.79</td>
+					<td>2.26</td>
+					<td>3.38</td>
+					<td>5.43</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<img src="images/图5-2.png" style="width:100%;">
+		<p class="figure-caption"><b>图4</b> 不同方法在雪山等无纹理区域存在的几何粗差</p>
+
+		<p>
+			<b></b>整体DSM精度评价受弱纹理区域的粗差影响较大（如图4）。为排除大范围粗差干扰，评估冰湖核心区的地形重建质量，采用上述针对冰湖周边8km²重点区域的精度评价（见表1）。
+		</p>
+		<hr>
+	</div>
+        <h3>4.3 冰湖蓄水量估计与时空演变分析</h3>
+        <h4>（1）等高线与湖泊边界匹配结果</h4>
+        <p>
+            图5展示了不同时期冰湖边界与利用SRTM、ZY3 DSM及GF7 DSM所生成等高线的匹配结果对比。基于GF7 DSM提取的等高线与影像中的水体边界高度吻合；ZY3 DSM所获等高线整体趋势一致，但存在局部偏差；而SRTM数据差异显著。
+        </p>
+        <img src="images/图6.png" style="width:100%;">
+        <p class="figure-caption"><b>图5</b> 地形等高线与湖泊边界最优匹配结果</p>
+
+        <h4>（2）2025年冰湖溃决过程分析</h4>
+        <p>
+            如图6所示，自2025年6月10日起，冰湖进入快速蓄水期。至7月5日，水位上升约19米。北京时间7月7日12时52分，蓄水量达到观测峰值。而在7月8日12时57分的影像中，湖面范围急剧收缩，水位骤降，反映了溃决事件的发生。
+        </p>
+        <img src="images/图7.png" style="width:100%;">
+        <p class="figure-caption"><b>图6</b> 2025年不同时期冰湖的轮廓变化</p>
+
+        <h4>（3）多年蓄水量演变与溃决量估算</h4>
+        <p>
+            基于高精度GF7-DSM，计算水位-面积（H-A）和水位-库容（H-V）关系。图7(c)展示了2021–2025年冰湖蓄水量的年际变化。2022年、2023年及2025年表现出显著的“夏涨秋消”特征。2025年蓄水量显著增大，于7月7日达到历史最高的982万m³，并在24小时内发生溃决，下泄水量约424万m³。洪峰从冰湖至吉隆口岸的路径总长41.2km，高程落差3318m，平均比降达80.5‰，导致下游发生严重洪水灾害。
+        </p>
+        <img src="images/图8.png" style="width:100%;">
+        <p class="figure-caption"><b>图7</b> 冰湖水位与面积、库容对应关系与水量时序变化</p>
+
+        <h3>4.4 流域地形三维分析</h3>
+        <!-- <h4>（1）DSM地形细节对比</h4>
+        <p>
+            图9对比了不同DSM的地形差异。本文方法重建的GF7 DSM（图7b）展示了最为丰富的地形细节。商业软件（图9e, f）在冰舌等弱纹理区域出现了明显的地形空洞，而本文方法在相同区域的地形更为完整平滑。
+        </p>
+        <img src="images/图9.png" style="width:100%;">
+        <p class="figure-caption"><b>图7</b> DSM细节对比</p> -->
+
+        <h4>（1）冰湖剖面形态</h4>
+        <p>
+            图8展示了冰湖的典型剖面形态，可见其湖底由冰碛物不均匀堆积而成，整体呈现粗糙的结构特征。冰碛物堆积坝体结构稳定性较差，易发生失稳。
+        </p>
+        <img src="images/图10.png" style="width:100%;">
+        <p class="figure-caption"><b>图8</b> 冰湖剖面图</p>
+
+        <h4>（2）溃决前后淹没范围三维可视化</h4>
+        <p>
+            图9展示了溃决前后（2025.7.7和2025.7.8）冰湖淹没范围变化。2025年7月7日至8日期间，该冰湖蓄水量急剧下降，湖面范围在24小时内显著收缩。
+        </p>
+        <img src="images/图11.png" style="width:100%;">
+        <p class="figure-caption"><b>图9</b> 湖面范围三维可视化</p>
+        <hr>
+    </div>
+
+    <div class="section">
+        <h2>5 结论</h2>
+        <p>
+            本文针对高原无资料地区冰湖水量监测难题，提出了一种融合国产高分辨率立体测绘卫星、多光谱遥感与星载激光测高技术的方法。以2025年7月8吉隆口岸溃决冰湖为研究对象，实现了该冰湖的水量动态监测，主要结论如下：
+        </p>
+        <ol>
+            <li>高分七号卫星立体影像可实现季节性冰湖的水量动态监测，在冰湖区域与ICESat-2点高程的相对误差为1.37米。</li>
+            <li>时序分析表明，溃决冰湖在2025年7月7日蓄水量达到历史极值982万m³，随后在24小时内急剧下泄约424万m³。洪峰路径总长41.2km，高差达3318m，平均比降达80.5‰，强动力条件与巨大势能转化是导致此次灾害的直接原因。</li>
+            <li>即便冰湖在影像中呈不连续分布，其地形等高线仍与冰湖边界高度匹配，证实冰碛坝体内部存在连通性。湖底组成以冰碛物为主，结构松散，构成持续性溃决风险。</li>
+            <li>基于多年时序分析，该冰湖在部分年份呈现季节性蓄水现象。当水位超过5104m、蓄水量大于400万m³时，建议结合气象要素加强实时监测与预警。</li>
+        </ol>
+        <p>
+            未来将尝试在具备实测水文资料的区域开展方法验证；进一步地，通过引入多源数据（如SAR等）提升地形重建的准确性与可靠性，并将本方法推广至已蓄水冰湖的水量变化监测中。
+        </p>
+        <hr>
+    </div>
+    
+    <div class="section">
+        <h2>致谢</h2>
+        <p>
+            感谢自然资源部国土卫星遥感应用中心为本研究提供的高分七号（GF7）和资源三号（ZY3）卫星数据。
+        </p>
+        <hr>
+    </div>
+
+    <!-- <div class="section ref-list">
+        <h2>参考文献</h2>
+        <p>[1] TAYLOR C, WILLIAMS R C G, WESTOBY M J, et al. Glacial lake outburst floods threaten millions globally[J]. Nature Communications, 2023, 14-36.</p>
+        <p>[2] GUO W, LIU S, XU J, et al. The 2020 glacial lake outburst flood at Jinwuco, Tibet[J]. The Cryosphere, 2021, 15: 3159-3176.</p>
+        <p>[3] 许继军, 朱振熔, 魏丹莉, 等. 西藏高原分区域河流健康评价体系应用研究[J]. 长江科学院院报, 2025, 42(S1): 1-10.</p>
+        <p>[4] NIE Y, LIU Q, LIU S, et al. Glacial lake expansion in the Central Himalayas by Landsat images, 1990–2010[J]. PLoS ONE, 2013, 8(12): 83-97.</p>
+        <p>[5] 郭少华, 向建明, 孙铁钢, 等. 基于SAR影像的冰湖季节性演化自动提取方法与气候响应分析[J]. 测绘科学, 2025, 48(2): 108-114.</p>
+        <p>[6] 陈喆, 向大享, 姜莹, 等. 基于国产高分三号星座的洪涝灾害应急监测模式研究——以洞庭湖区团洲垸溃口险情为例[J]. 长江科学院院报, 2024, 41(12): 189-195, 201.</p>
+        <p>[7] SMITH B, FRICKER H A, GARDNER A S, et al. Leveraging ICESat-2 and Landsat for Global-Scale, Multi-decadal Lake Volume Estimation[J]. Water Resources Research, 2023,59-72.</p>
+        <p>[8] ZHANG X, ZHANG G, LI J, et al. Reconstructing Tibetan Plateau lake bathymetry using ICESat-2[J]. Remote Sensing of Environment, 2025, 304: 316.</p>
+        <p>[9] LIU Y, LIAO J, GUO S, et al. SWOT mission enables high-precision and wide-coverage lake water level monitoring[J]. Journal of Hydrology, 2025, 600: 614.</p>
+        <p>[10] MARTINEZ-LOZADA F, DOMENEGHETTI A, TARPANELLI A, et al. SWOT Level 2 Lake Single-Pass Product demonstrates potential for seasonal water level monitoring[J]. Remote Sensing, 2025, 16: 27.</p>
+        <p>[11] 夏天, 严薇, 赵英芬, 等. 资源一号02D卫星数据应用[J]. 卫星应用, 2021, (11): 54-60.</p>
+        <p>[12] 《中国河湖大典》编纂委员会. 中国河湖大典[M]. 北京: 中国水利水电出版社, 2014.</p>
+        <p>[13] QU Y, YAN Q, YANG J, et al. Total Differential Photometric Mesh Refinement with Self-Adapted Mesh Denoising[J]. Photonics, 2023, 10(1): 20.</p>
+        <p>[14] QU Y, DENG F. Sat-mesh: Learning neural implicit surfaces for multi-view satellite reconstruction[J]. Remote Sensing, 2023, 15(17): 42-53.</p>
+        <p>[15] QU Y, AN X, CHEN S, et al. Satellite true digital orthophoto map generation without elevation data: a New NeRF-based method[J]. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 2024, 17: 258-269.</p>
+        <p>[16] HIRSCHMULLER H. Stereo processing by semiglobal matching and mutual information[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2007, 30(2): 328-341.</p>
+        <p>[17] QU Y, YAN Q, YANG J, et al. Total Differential Photometric Mesh Refinement with Self-Adapted Mesh Denoising[J]. Photonics, 2023,10(1):20-32.</p>
+        <p>[18] 徐涵秋. 利用改进的归一化差异水体指数(MNDWI)提取水体信息的研究[J]. 遥感学报, 2005, 9(5): 589-595.</p>
+        <p>[19] WOLFF K, KIM C, ZIMMER H, et al. Point Cloud Noise and Outlier Removal for Image-Based 3D Reconstruction[C]//IEEE. 2016 Fourth International Conference on 3D Vision, Stanford, CA, USA, October 25-28, 2016. New York: IEEE, 2016: 118-127.</p>
+        <p>[20] YE J, QIANG Y, ZHANG R, et al. High-precision digital surface model extraction from satellite stereo images fused with ICESat-2 data[J]. Remote Sensing, 2021, 14(1): 142-154.</p>
+    </div> -->
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body></html>
